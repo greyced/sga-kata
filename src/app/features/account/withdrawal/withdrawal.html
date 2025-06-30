@@ -1,0 +1,13 @@
+<h2>Withdrawal</h2>
+<div [formGroup]="form" (ngSubmit)="withdraw()">
+  <mat-form-field >
+    <mat-label>Withdrawal Amount</mat-label>
+    <input formControlName="amount"
+      matInput
+      type="number"
+      placeholder="Enter amount in Euro"
+    />
+  </mat-form-field>
+  <button routerLink="./../account">Cancel</button>
+  <button [disabled]="form.invalid" (click)="withdraw()">Confirm Withdrawal</button>
+</div>

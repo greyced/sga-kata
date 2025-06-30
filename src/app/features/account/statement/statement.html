@@ -1,0 +1,21 @@
+@let statement = statement$ | async; @if (statement) {
+<div id="printableArea">
+  <h2>Account Statement</h2>
+  <button class="no-print" matFab extended (click)="print()">
+    <mat-icon>print</mat-icon>
+    Print Statement
+  </button>
+  <ul>
+    @for (transaction of statement.transactions; track transaction.id) {
+    <li>
+      {{ transaction.date | date : "short" }} - {{ transaction.type }}:
+      {{ transaction.amount | currency : "EUR" }}
+    </li>
+    } @empty {
+    <li>There are no items.</li>
+    }
+  </ul>
+</div>
+} @else {
+<p>Loading...</p>
+}
