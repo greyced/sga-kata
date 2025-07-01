@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountContainer } from './account-container';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { Account } from '../core/account';
+import { MockAccountService } from '../core/mock-account.service';
 
 describe('AccountContainer', () => {
   let component: AccountContainer;
@@ -8,7 +11,8 @@ describe('AccountContainer', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AccountContainer]
+      imports: [AccountContainer],
+      providers: [provideZonelessChangeDetection(), { provide: Account, useClass: MockAccountService }]
     })
     .compileComponents();
 
