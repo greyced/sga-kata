@@ -4,6 +4,7 @@ import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { accountId } from '../core/account.const';
 
 @Component({
   selector: 'app-statement',
@@ -14,7 +15,7 @@ import { RouterModule } from '@angular/router';
 export class Statement {
   private readonly account = inject(Account);
 
-  statement$ = this.account.getStatement$('accountId'); 
+  statement$ = this.account.getStatement$(accountId); 
 
   print(): void {
    window.print();

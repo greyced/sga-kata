@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { accountId } from '../core/account.const';
 
 @Component({
   selector: 'app-withdrawal',
@@ -37,16 +38,17 @@ export class Withdrawal {
       return;
     }
 
-    this.account.withdraw('accountId', amount).subscribe({
+    this.account.withdraw(accountId, amount).subscribe({
       next: (statement) => {
         this.account.refreshBalance(statement);
-        this.router.navigate(['./../account']);
         console.log('withdraw successful:', statement);
       },
       error: (error) => {
-         this.router.navigate(['./../account']);
         console.error('withdraw failed:', error);
       },
+      complete: () => {
+        this.router.navigate(['./../account']);
+      }
     });
   }
 }

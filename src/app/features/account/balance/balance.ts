@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Account } from '../core/account';
 import { AsyncPipe } from '@angular/common';
 import { filter, map } from 'rxjs';
+import { accountId } from '../core/account.const';
 
 @Component({
   selector: 'app-balance',
@@ -17,7 +18,7 @@ export class Balance {
     filter(Boolean));
 
   constructor() {
-    this.account.loadBalance('accountId');
+    this.account.loadBalance(accountId);
   }
 
 }

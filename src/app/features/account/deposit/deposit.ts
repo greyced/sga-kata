@@ -11,6 +11,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Account } from '../core/account';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { accountId } from '../core/account.const';
 
 @Component({
   selector: 'app-deposit',
@@ -44,16 +45,17 @@ export class Deposit {
       return;
     }
 
-    this.account.deposit('accountId', amount).subscribe({
+    this.account.deposit(accountId, amount).subscribe({
       next: (statement) => {
         console.log('Deposit successful:', statement);
         this.account.refreshBalance(statement);
-        this.router.navigate(['./../account']);
       },
       error: (error) => {
         console.error('Deposit failed:', error);
-         this.router.navigate(['./../account']);
       },
+      complete: () => {
+        this.router.navigate(['./../account']);
+      }
     });
   }
 }

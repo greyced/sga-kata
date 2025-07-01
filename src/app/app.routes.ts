@@ -41,6 +41,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'account/123',
+    redirectTo: 'account/accountId',
   },
 ];
