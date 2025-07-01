@@ -8,7 +8,7 @@ import { AccountBalance, AccountStatement } from '../model/account.model';
 export class AccountService implements Account {
   private readonly httpClient = inject(HttpClient);
 
-  private readonly baseUrl = "/v1/api/account";
+  private readonly baseUrl = "http://localhost:8080/api/account";
 
   private readonly balance$$ = new BehaviorSubject<AccountBalance | null>(null);
 
@@ -16,7 +16,7 @@ export class AccountService implements Account {
 
   loadBalance(accountId: string): void {
     this.httpClient
-      .get<AccountBalance>(`${this.baseUrl}/balance`)
+      .get<AccountBalance>(`${this.baseUrl}/${accountId}/balance`)
       .subscribe((balance: AccountBalance) => {
         this.balance$$.next(balance);
       });
@@ -26,15 +26,17 @@ export class AccountService implements Account {
     this.balance$$.next(balance);
   }
 
-  statement$ = this.httpClient.get<AccountStatement>(`${this.baseUrl}/statement`);
+  getStatement$(accountId: string): Observable<AccountStatement> {
+      return this.httpClient.get<AccountStatement>(`${this.baseUrl}/${accountId}/statement`);
+  }
 
   deposit(accountId: string, amount: number): Observable<AccountBalance> {
     return this.httpClient
-      .post<AccountBalance>(`${this.baseUrl}/deposit`, { amount })
+      .post<AccountBalance>(`${this.baseUrl}/${accountId}/deposit`, { amount })
   }
 
   withdraw(accountId: string, amount: number): Observable<AccountBalance> {
     return this.httpClient
-      .post<AccountBalance>(`${this.baseUrl}/withdraw`, { amount })
+      .post<AccountBalance>(`${this.baseUrl}/${accountId}/withdraw`, { amount })
   }
 }

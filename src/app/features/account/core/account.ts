@@ -4,7 +4,7 @@ import { AccountBalance, AccountStatement } from "../model/account.model";
 export abstract class Account {
 
     abstract balance$:  Observable<AccountBalance | null>;
-    abstract statement$: Observable<AccountStatement>;
+    abstract getStatement$(accountId: string): Observable<AccountStatement>;
     abstract loadBalance(accountId: string): void;
     abstract refreshBalance(balance: AccountBalance): void;
     abstract deposit(accountId: string, amount: number): Observable<AccountBalance>;

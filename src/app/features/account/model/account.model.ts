@@ -26,33 +26,3 @@ export interface Transaction {
     date: Date;
     description?: string; // Optional field for transaction description
 }
-
-export class DepositTransaction implements Transaction {
-    id: string;
-    type: 'deposit' = 'deposit';
-    amount: number;
-    date: Date;
-    description?: string;
-
-    constructor(id: string, amount: number, date: Date, description?: string) {
-        this.id = id;
-        this.amount = amount;
-        this.date = date;
-        this.description = description;
-    }
-}
-
-export class WithdrawalTransaction implements Transaction {
-    id: string;
-    type: 'withdrawal' = 'withdrawal';
-    amount: number;
-    date: Date;
-    description?: string;
-
-    constructor(id: string, amount: number, date: Date, description?: string) {
-        this.id = id;
-        this.amount = amount;
-        this.date = date;
-        this.description = description;
-    }
-}

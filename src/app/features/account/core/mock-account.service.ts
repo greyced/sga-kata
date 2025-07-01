@@ -21,7 +21,9 @@ export class MockAccountService implements Account {
     this.balance$$.next(balance);
   }
 
-  statement$: Observable<AccountStatement> = of({ accountId: '12345', transactions: this.fakeTransactions });
+  getStatement$(accountId: string): Observable<AccountStatement> {
+      return of({ accountId: accountId, transactions: this.fakeTransactions });
+  }
 
   deposit(accountId: string, amount: number): Observable<AccountBalance> {
    return of({ amount: this.balance$$.value.amount+ amount, currency: this.balance$$.value.currency });

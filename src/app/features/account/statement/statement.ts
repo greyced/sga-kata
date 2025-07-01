@@ -12,7 +12,7 @@ import { MatIcon } from '@angular/material/icon';
 export class Statement {
   private readonly account = inject(Account);
 
-  statement$ = this.account.statement$; 
+  statement$ = this.account.getStatement$('accountId'); 
 
   print(): void {
    window.print();
