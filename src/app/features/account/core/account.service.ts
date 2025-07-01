@@ -32,11 +32,11 @@ export class AccountService implements Account {
 
   deposit(accountId: string, amount: number): Observable<AccountBalance> {
     return this.httpClient
-      .post<AccountBalance>(`${this.baseUrl}/${accountId}/deposit`, { amount })
+      .post<AccountBalance>(`${this.baseUrl}/${accountId}/deposit`, amount)
   }
 
   withdraw(accountId: string, amount: number): Observable<AccountBalance> {
     return this.httpClient
-      .post<AccountBalance>(`${this.baseUrl}/${accountId}/withdraw`, { amount })
+      .post<AccountBalance>(`${this.baseUrl}/${accountId}/withdraw`, amount)
   }
 }
