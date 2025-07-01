@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Account } from '../core/account';
 import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-statement',
-  imports: [CurrencyPipe, DatePipe, AsyncPipe, MatIcon],
+  imports: [CurrencyPipe, DatePipe, AsyncPipe, MatIcon, MatIconModule, MatButtonModule, RouterModule],
   templateUrl: './statement.html',
   styleUrl: './statement.scss'
 })

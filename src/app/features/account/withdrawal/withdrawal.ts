@@ -9,10 +9,12 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-withdrawal',
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterModule],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterModule, MatButtonModule, MatIconModule],
   templateUrl: './withdrawal.html',
   styleUrl: './withdrawal.scss',
 })

@@ -1,5 +1,7 @@
 @let balance = balance$ | async; @if (balance) {
-<p> {{ balance.amount }} {{ balance.currency }} </p>
+<h4>Your actual balance: </h4><div class="balance-content">
+<p class="balance-amount"> {{ balance.amount }} </p>  {{  balance.currency  }} 
+</div> 
 } @else {
 <p>Balance account Loading...</p>
 }

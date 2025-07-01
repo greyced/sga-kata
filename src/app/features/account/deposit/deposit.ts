@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterModule } from '@angular/router';
 import { Account } from '../core/account';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-deposit',
@@ -17,6 +19,8 @@ import { Account } from '../core/account';
     MatInputModule,
     ReactiveFormsModule,
     RouterModule,
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './deposit.html',
   styleUrl: './deposit.scss',

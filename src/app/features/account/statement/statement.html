@@ -1,6 +1,10 @@
 @let statement = statement$ | async; @if (statement) {
 <div id="printableArea">
   <h2>Account Statement</h2>
+   <a matFab class="no-print mr-2" extended routerLink="./../account">
+     <mat-icon>arrow_back</mat-icon>
+    Cancel
+  </a>
   <button class="no-print" matFab extended (click)="print()">
     <mat-icon>print</mat-icon>
     Print Statement

@@ -29,6 +29,6 @@ describe('Balance', () => {
     const fixture = TestBed.createComponent(Balance);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('p')?.textContent).toContain('4000 EUR');
+    expect(compiled.querySelector('.balance-amount')?.textContent).toContain('4000');
   });
 });

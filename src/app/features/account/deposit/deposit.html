@@ -1,13 +1,18 @@
 <h2>Deposit</h2>
 <div class="form-content" [formGroup]="form" (ngSubmit)="deposit()">
-  <mat-form-field >
+  <mat-form-field>
     <mat-label>Deposit Amount</mat-label>
-    <input formControlName="amount"
-      matInput
-      type="number"
-      placeholder="Enter amount in Euro"
-    />
+    <input formControlName="amount" matInput type="number" placeholder="Enter amount in Euro" />
   </mat-form-field>
-  <button routerLink="./../account">Cancel</button>
-  <button [disabled]="form.invalid" (click)="deposit()">Confirm Deposit</button>
+
+  <div>
+    <a class="mr-2" matFab extended routerLink="./../account">
+      <mat-icon>arrow_back</mat-icon>
+      Cancel
+    </a>
+    <a matFab extended [disabled]="form.invalid" (click)="deposit()">
+      <mat-icon>publish</mat-icon>
+      Confirm Deposit
+    </a>
+  </div>
 </div>

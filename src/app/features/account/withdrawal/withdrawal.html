@@ -1,13 +1,18 @@
 <h2>Withdrawal</h2>
 <div class="form-content" [formGroup]="form" (ngSubmit)="withdraw()">
-  <mat-form-field >
+  <mat-form-field>
     <mat-label>Withdrawal Amount</mat-label>
-    <input formControlName="amount"
-      matInput
-      type="number"
-      placeholder="Enter amount in Euro"
-    />
+    <input formControlName="amount" matInput type="number" placeholder="Enter amount in Euro" />
   </mat-form-field>
-  <button routerLink="./../account">Cancel</button>
-  <button [disabled]="form.invalid" (click)="withdraw()">Confirm Withdrawal</button>
+  <div>
+    <a matFab class="mr-2" extended routerLink="./../account">
+      <mat-icon>arrow_back</mat-icon>
+      Cancel
+    </a>
+    <a matFab extended [disabled]="form.invalid" (click)="withdraw()">
+      <mat-icon>download</mat-icon>
+      Confirm Withdrawal
+    </a>
+  </div>
+
 </div>
