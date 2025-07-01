@@ -1,20 +1,19 @@
+import { provideHttpClient } from '@angular/common/http';
 import { Routes } from '@angular/router';
-import { Home } from './features/account/home/home';
-import { Withdrawal } from './features/account/withdrawal/withdrawal';
-import { Deposit } from './features/account/deposit/deposit';
-import { Statement } from './features/account/statement/statement';
+import { AccountContainer } from './features/account/account-container/account-container';
 import { Account } from './features/account/core/account';
 import { AccountService } from './features/account/core/account.service';
-import { AccountContainer } from './features/account/account-container/account-container';
-import { provideHttpClient } from '@angular/common/http';
-import { MockAccountService } from './features/account/core/mock-account.service';
+import { Deposit } from './features/account/deposit/deposit';
+import { Home } from './features/account/home/home';
+import { Statement } from './features/account/statement/statement';
+import { Withdrawal } from './features/account/withdrawal/withdrawal';
 
 export const routes: Routes = [
   {
     path: 'account',
     component: AccountContainer,
     providers: [
-      { provide: Account, useClass: MockAccountService },
+      { provide: Account, useClass: AccountService },
       provideHttpClient(),
     ],
     children: [

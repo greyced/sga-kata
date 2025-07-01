@@ -8,17 +8,16 @@ import { AccountBalance, AccountStatement } from '../model/account.model';
 export class AccountService implements Account {
   private readonly httpClient = inject(HttpClient);
 
-  private readonly balance$$ = new BehaviorSubject<AccountBalance>({
-    amount: 2000,
-    currency: 'EUR',
-  });
+  private readonly baseUrl = "/v1/api/account";
+
+  private readonly balance$$ = new BehaviorSubject<AccountBalance | null>(null);
 
   readonly balance$ = this.balance$$.asObservable();
 
   loadBalance(): void {
     this.httpClient
-      .get<AccountBalance>('/api/account/balance')
-      .subscribe((balance) => {
+      .get<AccountBalance>(`${this.baseUrl}/balance`)
+      .subscribe((balance: AccountBalance) => {
         this.balance$$.next(balance);
       });
   }
@@ -27,15 +26,15 @@ export class AccountService implements Account {
     this.balance$$.next(balance);
   }
 
-  statement$ = this.httpClient.get<AccountStatement>('/api/account/statement');
+  statement$ = this.httpClient.get<AccountStatement>(`${this.baseUrl}/statement`);
 
   deposit(amount: number): Observable<AccountBalance> {
     return this.httpClient
-      .post<AccountBalance>('/api/account/deposit', { amount })
+      .post<AccountBalance>(`${this.baseUrl}/deposit`, { amount })
   }
 
   withdraw(amount: number): Observable<AccountBalance> {
     return this.httpClient
-      .post<AccountBalance>('/api/account/withdraw', { amount })
+      .post<AccountBalance>(`${this.baseUrl}/withdraw`, { amount })
   }
 }
