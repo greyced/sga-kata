@@ -35,7 +35,7 @@ export class Withdrawal {
       return;
     }
 
-    this.account.withdraw(amount).subscribe({
+    this.account.withdraw('accountId', amount).subscribe({
       next: (statement) => {
         this.account.refreshBalance(statement);
         this.router.navigate(['./../account']);

@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterModule } from '@angular/router';
 import { Account } from '../core/account';
 
 @Component({
@@ -24,7 +24,9 @@ import { Account } from '../core/account';
 export class Deposit {
   private readonly account = inject(Account);
 
-  private readonly router = inject(Router);
+  private readonly router = inject(Router); 
+
+  private readonly activatedRoute = inject(ActivatedRouteSnapshot);
 
   readonly form = new FormGroup({
     amount: new FormControl<number | null>(null, [
@@ -40,7 +42,7 @@ export class Deposit {
       return;
     }
 
-    this.account.deposit(amount).subscribe({
+    this.account.deposit('accountId', amount).subscribe({
       next: (statement) => {
         console.log('Deposit successful:', statement);
         this.account.refreshBalance(statement);

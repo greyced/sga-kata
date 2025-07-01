@@ -14,7 +14,7 @@ export class AccountService implements Account {
 
   readonly balance$ = this.balance$$.asObservable();
 
-  loadBalance(): void {
+  loadBalance(accountId: string): void {
     this.httpClient
       .get<AccountBalance>(`${this.baseUrl}/balance`)
       .subscribe((balance: AccountBalance) => {
@@ -28,12 +28,12 @@ export class AccountService implements Account {
 
   statement$ = this.httpClient.get<AccountStatement>(`${this.baseUrl}/statement`);
 
-  deposit(amount: number): Observable<AccountBalance> {
+  deposit(accountId: string, amount: number): Observable<AccountBalance> {
     return this.httpClient
       .post<AccountBalance>(`${this.baseUrl}/deposit`, { amount })
   }
 
-  withdraw(amount: number): Observable<AccountBalance> {
+  withdraw(accountId: string, amount: number): Observable<AccountBalance> {
     return this.httpClient
       .post<AccountBalance>(`${this.baseUrl}/withdraw`, { amount })
   }

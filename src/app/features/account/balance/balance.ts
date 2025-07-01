@@ -17,7 +17,7 @@ export class Balance {
     filter(Boolean));
 
   constructor() {
-    this.account.loadBalance();
+    this.account.loadBalance('accountId');
   }
 
 }

@@ -10,7 +10,7 @@ import { Withdrawal } from './features/account/withdrawal/withdrawal';
 
 export const routes: Routes = [
   {
-    path: 'account',
+    path: 'account/:accountId',
     component: AccountContainer,
     providers: [
       { provide: Account, useClass: AccountService },
@@ -41,6 +41,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'account',
+    redirectTo: 'account/123',
   },
 ];

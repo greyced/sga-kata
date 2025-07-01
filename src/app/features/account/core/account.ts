@@ -5,9 +5,9 @@ export abstract class Account {
 
     abstract balance$:  Observable<AccountBalance | null>;
     abstract statement$: Observable<AccountStatement>;
-    abstract loadBalance(): void;
+    abstract loadBalance(accountId: string): void;
     abstract refreshBalance(balance: AccountBalance): void;
-    abstract deposit(amount: number): Observable<AccountBalance>;
-    abstract withdraw(amount: number): Observable<AccountBalance>;
+    abstract deposit(accountId: string, amount: number): Observable<AccountBalance>;
+    abstract withdraw(accountId: string, amount: number): Observable<AccountBalance>;
     
 }
